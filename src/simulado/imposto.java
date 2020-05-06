@@ -10,7 +10,7 @@ public class imposto {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 		
-		double rendaComSalario, rendaComPrestacao, rendaGanho, gastosMedic, gastosEduca;
+		double mensal, rendaComSalario, rendaComPrestacao, rendaGanho, gastosMedic, gastosEduca, impostoSal, impostoServ, impostoGanho;
 		
 		
 		/// LEITURA DE VARIAVEIS ///
@@ -26,7 +26,43 @@ public class imposto {
 		System.out.println("Gastos educacionais: ");
 		gastosEduca = sc.nextDouble();
 		
+		/// RELATÓRIO DE IMPOSTO DE RENDA ///
 		
+		
+		System.out.println("");
+		System.out.println("RELATÓRIO DE IMPOSTO DE RENDA");
+		System.out.println("");
+		
+		
+		/// IMPOSTO SOBRE SALÁRIO ///
+		mensal = rendaComSalario / 12.0;
+		if(mensal < 3000.00) {
+			impostoSal = mensal * 12;
+		}else if(mensal <= 5000.00) {
+			impostoSal = (mensal * 0.10) * 12;
+		}else {
+			impostoSal = (mensal * 0.20) * 12;
+		}
+		
+		/// IMPOSTO SOBRE SERVIÇOS ///
+		if(rendaComPrestacao > 0) {
+			impostoServ = rendaComPrestacao * 0.15;
+		}else {
+			impostoServ = 0.00;
+		}
+		
+		/// IMPOSTO SOBRE GANHO DE CAPITAL ///
+		if(rendaGanho > 0) {
+			impostoGanho = rendaGanho * 0.20;
+		}else {
+			impostoGanho = 0.00;
+		}
+		
+		/// CONSOLIDADO DE RENDA ///
+		System.out.println("CONSOLIDADO DE RENDA:");
+		System.out.printf("Imposto sobre salário: %.2f%n", impostoSal);
+		System.out.printf("Imposto sobre serviços: %.2f%n", impostoServ);
+		System.out.printf("Imposto sobre ganho de capital: %.2f%n", impostoGanho);
 		
 		sc.close();
 
