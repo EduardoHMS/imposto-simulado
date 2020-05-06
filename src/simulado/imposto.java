@@ -10,7 +10,7 @@ public class imposto {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 		
-		double mensal, rendaComSalario, rendaComPrestacao, rendaGanho, gastosMedic, gastosEduca, impostoSal, impostoServ, impostoGanho;
+		double gastoDedu, maxDedu, mensal, rendaComSalario, rendaComPrestacao, rendaGanho, gastosMedic, gastosEduca, impostoSal, impostoServ, impostoGanho;
 		
 		
 		/// LEITURA DE VARIAVEIS ///
@@ -63,6 +63,19 @@ public class imposto {
 		System.out.printf("Imposto sobre salário: %.2f%n", impostoSal);
 		System.out.printf("Imposto sobre serviços: %.2f%n", impostoServ);
 		System.out.printf("Imposto sobre ganho de capital: %.2f%n", impostoGanho);
+		
+		
+		/// DEDUTIVEIS ///
+		gastoDedu = gastosMedic + gastosEduca;
+		maxDedu = (impostoSal + impostoServ + impostoGanho) * 0.30;
+		
+		
+		/// DEDUÇÕES ///
+		System.out.println("");
+		System.out.println("DEDUÇÕES:");
+		System.out.printf("Máximo dedutível: %.2f%n", maxDedu);
+		System.out.printf("Gastos dedutíveis: %.2f%n", gastoDedu);
+		
 		
 		sc.close();
 
